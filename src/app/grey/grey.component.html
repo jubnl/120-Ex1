@@ -1,5 +1,5 @@
-<p class="grey">Grey component</p>
-<button (click)="addPinkItem()">Add a pink item</button>
+<p class="grey inline">Grey component</p>
+<button class="inline button-add" role="button" (click)="addPinkItem()">Add a pink item</button>
 <app-pink
   *ngFor="let pink of pinks; let i=index"
   [idNumber]="pink"

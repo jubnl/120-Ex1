@@ -28,13 +28,16 @@ export class GreyComponent implements OnInit {
     } else {
       tmpIndex = index - 1;
     }
+
+    // inverse 2 elements in array
     [this.pinks[tmpIndex], this.pinks[index]] = [this.pinks[index], this.pinks[tmpIndex]];
   }
 
   addPinkItem() {
-    // sort pinks and get the biggest element
     let newPink = 1;
+
     if (this.pinks.length) {
+      // get the largest element in array and add 1 to it
       newPink = Math.max(...this.pinks) + 1;
     }
     this.pinks.push(newPink)
