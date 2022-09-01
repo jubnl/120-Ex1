@@ -1,0 +1,27 @@
+<p class="{{cssClasses}}">{{colorName}} component {{idNumberDisplay}}</p>
+<button *ngIf="addBtnEnabled" class="inline button-add" role="button" (click)="addPinkItem()">Add a pink item</button>
+<div *ngIf="moveBtnEnabled" class="d-table-cell tar">
+  <button class="button-move" (click)="moveMeUp()" [disabled]="btnUpDisabled">⬆</button>
+  <button class="button-move" (click)="moveMeDown()" [disabled]="btnDownDisabled">⬇</button>
+  <button class="button-delete" (click)="deleteMe()">❌</button>
+</div>
+
+
+<app-color
+  *ngFor="let pink of pinks; let i=index"
+  [idNumber]="pink"
+  [index]="i"
+  (delete)="deleteComponent($event)"
+  (moveDown)="moveItem(i, true)"
+  (moveUp)="moveItem(i, false)"
+  [btnDownDisabled]="i + 1 === pinks.length"
+  [btnUpDisabled]="i === 0"
+  colorName="Pink"
+  cssClasses="pink"
+  [moveBtnEnabled]="true"
+  class="border-pink"
+></app-color>
+
+
+<app-color *ngIf="orangeComponent" cssClasses="orange border-orange" colorName="Orange" class="border-orange"></app-color>
+<app-color *ngIf="orangeComponent" cssClasses="orange border-orange larger" colorName="Orange" class="border-orange"></app-color>

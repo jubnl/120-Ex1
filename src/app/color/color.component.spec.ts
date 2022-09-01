@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GreenComponent } from './green.component';
+import { ColorComponent } from './color.component';
 
-describe('GreenComponent', () => {
-  let component: GreenComponent;
-  let fixture: ComponentFixture<GreenComponent>;
+describe('ColorComponent', () => {
+  let component: ColorComponent;
+  let fixture: ComponentFixture<ColorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GreenComponent ]
+      declarations: [ ColorComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GreenComponent);
+    fixture = TestBed.createComponent(ColorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
