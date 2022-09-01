@@ -1,6 +1,8 @@
-<p class="pink">Pink component {{idNumber}}</p>
-<button (click)="deleteMe()">delete me</button>
-<button (click)="moveMeUp()" [disabled]="btnUpDisabled">↑</button>
-<button (click)="moveMeDown()" [disabled]="btnDownDisabled">↓</button>
+<p class="pink inline">Pink component {{idNumber}}</p>
+<div class="d-table-cell tar">
+  <button class="button-move" (click)="moveMeUp()" [disabled]="btnUpDisabled">⬆</button>
+  <button class="button-move" (click)="moveMeDown()" [disabled]="btnDownDisabled">⬇</button>
+  <button class="button-delete" (click)="deleteMe()">❌</button>
+</div>
 
 
