@@ -5,8 +5,8 @@
   [idNumber]="pink"
   [index]="i"
   (delete)="deleteComponent($event)"
-  (moveDown)="moveItemDown($event)"
-  (moveUp)="moveItemUp($event)"
+  (moveDown)="moveItem(i, true)"
+  (moveUp)="moveItem(i, false)"
   [btnDownDisabled]="i + 1 === pinks.length"
   [btnUpDisabled]="i === 0"
 ></app-pink>

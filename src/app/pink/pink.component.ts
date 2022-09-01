@@ -17,8 +17,8 @@ export class PinkComponent implements OnInit {
 
   // event that are fired when someone press on the buttons
   @Output() delete: EventEmitter<number> = new EventEmitter();
-  @Output() moveUp: EventEmitter<number> = new EventEmitter();
-  @Output() moveDown: EventEmitter<number> = new EventEmitter();
+  @Output() moveUp: EventEmitter<[number, boolean]> = new EventEmitter();
+  @Output() moveDown: EventEmitter<[number, boolean]> = new EventEmitter();
 
 
   constructor() {
@@ -34,11 +34,11 @@ export class PinkComponent implements OnInit {
 
   // fire move up event
   moveMeUp() {
-    this.moveUp.emit(this.index);
+    this.moveUp.emit([this.index, true]);
   }
 
   // fire move down event
   moveMeDown() {
-    this.moveDown.emit(this.index);
+    this.moveDown.emit([this.index, false]);
   }
 }

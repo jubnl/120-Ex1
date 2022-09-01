@@ -17,31 +17,25 @@ export class GreyComponent implements OnInit {
 
   // catch delete event fired by a pink component
   deleteComponent(index: number) {
-    this.pinks = this.pinks.filter(p => p !== this.pinks[index])
+    this.pinks.splice(index, 1);
   }
 
-  // catch move up event fired by a pink component
-  moveItemUp(index: number) {
-    if (index === 0) {
-      return;
+  // catch move event fired by a pink component
+  moveItem(index: number, down: boolean) {
+    let tmpIndex: number;
+    if (down) {
+      tmpIndex = index + 1;
+    } else {
+      tmpIndex = index - 1;
     }
-    [this.pinks[index - 1], this.pinks[index]] = [this.pinks[index], this.pinks[index - 1]];
-  }
-
-  // catch move down event fired by a pink component
-  moveItemDown(index: number) {
-    if (index + 1 === this.pinks.length) {
-      return;
-    }
-    [this.pinks[index + 1], this.pinks[index]] = [this.pinks[index], this.pinks[index + 1]];
+    [this.pinks[tmpIndex], this.pinks[index]] = [this.pinks[index], this.pinks[tmpIndex]];
   }
 
   addPinkItem() {
     // sort pinks and get the biggest element
-    let newPink = this.pinks.sort((n1, n2) => n1 - n2)[this.pinks.length - 1] + 1;
-
-    if (isNaN(newPink)) {
-      newPink = 1;
+    let newPink = 1;
+    if (this.pinks.length) {
+      newPink = Math.max(...this.pinks) + 1;
     }
     this.pinks.push(newPink)
   }
