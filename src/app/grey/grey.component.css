@@ -1,0 +1,11 @@
+:host {
+  height: 100%;
+  border-style: solid;
+  border-width: medium;
+  border-color: grey;
+}
+
+.grey {
+  padding-left: 2%;
+  color: grey;
+}
