@@ -7,15 +7,18 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class PinkComponent implements OnInit {
 
-  @Input() idNumber: string = "";
-  @Input() index: string = "";
+  // index and number that need to be displayed
+  @Input() idNumber: number = 0;
+  @Input() index: number = 0;
 
+  // if the buttons is enabled/disabled
   @Input() btnUpDisabled: boolean = false;
   @Input() btnDownDisabled: boolean = false;
 
-  @Output() delete: EventEmitter<string> = new EventEmitter();
-  @Output() moveUp: EventEmitter<string> = new EventEmitter();
-  @Output() moveDown: EventEmitter<string> = new EventEmitter();
+  // event that are fired when someone press on the buttons
+  @Output() delete: EventEmitter<number> = new EventEmitter();
+  @Output() moveUp: EventEmitter<number> = new EventEmitter();
+  @Output() moveDown: EventEmitter<number> = new EventEmitter();
 
 
   constructor() {
@@ -24,14 +27,17 @@ export class PinkComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // fire delete event
   deleteMe() {
     this.delete.emit(this.index);
   }
 
+  // fire move up event
   moveMeUp() {
     this.moveUp.emit(this.index);
   }
 
+  // fire move down event
   moveMeDown() {
     this.moveDown.emit(this.index);
   }

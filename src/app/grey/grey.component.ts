@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {PinkComponent} from "../pink/pink.component";
 
 @Component({
   selector: 'app-grey',
@@ -8,7 +7,7 @@ import {PinkComponent} from "../pink/pink.component";
 })
 export class GreyComponent implements OnInit {
 
-  pinks: string[] = ["1", "2", "3", "4"]
+  pinks: number[] = [1, 2, 3, 4]
 
   constructor() {
   }
@@ -16,20 +15,21 @@ export class GreyComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteComponent($event: string) {
-    this.pinks = this.pinks.filter(p => p !== this.pinks[parseInt($event)])
+  // catch delete event fired by a pink component
+  deleteComponent(index: number) {
+    this.pinks = this.pinks.filter(p => p !== this.pinks[index])
   }
 
-  moveItemUp(indexStr: string) {
-    const index = parseInt(indexStr);
+  // catch move up event fired by a pink component
+  moveItemUp(index: number) {
     if (index === 0) {
       return;
     }
     [this.pinks[index - 1], this.pinks[index]] = [this.pinks[index], this.pinks[index - 1]];
   }
 
-  moveItemDown(indexStr: string) {
-    const index = parseInt(indexStr);
+  // catch move down event fired by a pink component
+  moveItemDown(index: number) {
     if (index + 1 === this.pinks.length) {
       return;
     }
@@ -37,14 +37,12 @@ export class GreyComponent implements OnInit {
   }
 
   addPinkItem() {
-    // map array of string to array of int
-    let newPink = this.pinks.map(s => {
-      return parseInt(s)
-    }).sort((n1, n2) => n1 - n2)[this.pinks.length - 1] + 1;
+    // sort pinks and get the biggest element
+    let newPink = this.pinks.sort((n1, n2) => n1 - n2)[this.pinks.length - 1] + 1;
 
     if (isNaN(newPink)) {
       newPink = 1;
     }
-    this.pinks.push(newPink.toString())
+    this.pinks.push(newPink)
   }
 }
