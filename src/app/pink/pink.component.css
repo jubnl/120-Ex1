@@ -92,6 +92,7 @@
 }
 .button-move:disabled {
   background-color: grey;
+  cursor: no-drop;
 }
 .button-move:hover .button-move:active {
   background-color: #1C84FF;
